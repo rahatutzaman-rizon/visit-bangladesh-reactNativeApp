@@ -123,7 +123,7 @@ export default function HomeScreen() {
       icon: '🕌',
       title: 'Star Mosque',
       subtitle: 'Tara Masjid',
-      location: 'Old Dhaka',
+      location: 'Dhaka',
       description: 'Beautiful star motif decorations',
       highlights: ['Star Patterns', 'Artistic Tiles', 'Mughal Style'],
       gradient: ['#4169E1', '#6495ED', '#87CEEB'],
@@ -199,14 +199,14 @@ export default function HomeScreen() {
       title: 'Nakshi Kantha', 
       description: 'Embroidered Storytelling Quilts',
       season: 'Year Round',
-      significance: 'Folk Art'
+      significance: 'Folk Artistry'
     },
     { 
       icon: '🎵', 
       title: 'Baul Tradition', 
       description: 'Mystical Folk Music & Philosophy',
       season: 'Cultural Heritage',
-      significance: 'UNESCO Recognition'
+      significance: 'UNESCO Recognition '
     },
     { 
       icon: '🏺', 
