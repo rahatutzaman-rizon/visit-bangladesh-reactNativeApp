@@ -1,69 +1,76 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
-import { Platform, View } from 'react-native';
+import { Platform } from 'react-native';
 
 import { HapticTab } from '@/components/HapticTab';
 import { IconSymbol } from '@/components/ui/IconSymbol';
+import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
-  const themeColor = Colors[colorScheme ?? 'light'].tint;
 
   return (
     <Tabs
       screenOptions={{
+        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarInactiveTintColor: '#8e8e93',
         headerShown: false,
-        tabBarActiveTintColor: themeColor,
-        tabBarInactiveTintColor: '#888',
         tabBarButton: HapticTab,
-        tabBarBackground: () => (
-          <View
-            style={{
-              backgroundColor: 'rgba(255, 255, 255, 0.9)', // semi-transparent white
-              borderRadius: 30,
-              marginHorizontal: 16,
-              marginBottom: Platform.OS === 'ios' ? 20 : 10,
-              height: 70,
-              shadowColor: '#000',
-              shadowOpacity: 0.1,
-              shadowOffset: { width: 0, height: 4 },
-              shadowRadius: 8,
-              elevation: 10,
-            }}
-          />
-        ),
-        tabBarStyle: {
-          position: 'absolute',
-          backgroundColor: 'transparent',
-          borderTopWidth: 0,
-          height: 70,
-        },
-        tabBarIconStyle: {
-          marginTop: 8,
-        },
+        tabBarBackground: TabBarBackground,
         tabBarLabelStyle: {
           fontSize: 12,
-          marginBottom: 8,
+          fontWeight: '600',
+          marginBottom: 2,
         },
+        tabBarStyle: Platform.select({
+          ios: {
+            position: 'absolute',
+            height: 70,
+            paddingBottom: 10,
+            paddingTop: 5,
+            borderTopLeftRadius: 20,
+            borderTopRightRadius: 20,
+            backgroundColor: 'rgba(255,255,255,0.9)',
+            borderTopWidth: 0,
+            shadowColor: '#000',
+            shadowOpacity: 0.05,
+            shadowRadius: 10,
+          },
+          android: {
+            height: 60,
+            borderTopWidth: 0.3,
+            backgroundColor: 'white',
+          },
+        }),
       }}
     >
       <Tabs.Screen
         name="index"
         options={{
           title: 'Home',
-          tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="house.fill" color={color} />
+          tabBarLabel: 'Home',
+          tabBarIcon: ({ color, focused }) => (
+            <IconSymbol
+              size={focused ? 30 : 26}
+              name="house.fill"
+              color={color}
+            />
           ),
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="explore11"
         options={{
           title: 'Explore',
-          tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="paperplane.fill" color={color} />
+          tabBarLabel: 'Explore',
+          tabBarIcon: ({ color, focused }) => (
+            <IconSymbol
+              size={focused ? 30 : 26}
+              name="paperplane.fill"
+              color={color}
+            />
           ),
         }}
       />

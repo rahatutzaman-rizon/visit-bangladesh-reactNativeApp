@@ -3,15 +3,15 @@
 import { BlurView } from "expo-blur"
 import { useEffect, useRef, useState } from "react"
 import {
-    Animated,
-    Dimensions,
-    Platform,
-    ScrollView,
-    StatusBar,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  Animated,
+  Dimensions,
+  Platform,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native"
 
 const { width, height } = Dimensions.get("window")

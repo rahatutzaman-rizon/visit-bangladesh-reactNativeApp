@@ -1,32 +1,31 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {
-    Animated,
-    Dimensions,
-    Platform,
-    ScrollView,
-    StatusBar,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View
+  Animated,
+  Dimensions,
+  Platform,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
 } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
 
-// Professional color palette - Navy Blue, Gold, White, Gray
 const COLORS = {
-  primary: '#1E3A8A',        // Navy Blue
-  secondary: '#F59E0B',      // Professional Gold
-  accent: '#6B7280',         // Professional Gray
-  background: '#F8FAFC',     // Light Gray Background
+  primary: '#1E3A8A',
+  secondary: '#F59E0B',
+  accent: '#6B7280',
+  background: '#F8FAFC',
   white: '#FFFFFF',
-  dark: '#1F2937',           // Dark Gray
-  lightBlue: '#3B82F6',      // Light Blue
-  darkBlue: '#1E40AF',       // Dark Blue
-  lightGray: '#E5E7EB',      // Light Gray
-  text: '#374151',           // Text Gray
-  success: '#10B981',        // Success Green (minimal use)
-  warning: '#F59E0B',        // Warning Orange
+  dark: '#1F2937',
+  lightBlue: '#3B82F6',
+  darkBlue: '#1E40AF',
+  lightGray: '#E5E7EB',
+  text: '#374151',
+  success: '#10B981',
+  warning: '#F59E0B',
 };
 
 export default function ProfessionalBangladeshApp() {
@@ -43,6 +42,15 @@ export default function ProfessionalBangladeshApp() {
     'Independence: March 26, 1971',
     'Area: 147,570 km² (56,980 sq mi)',
     'Population: 165+ million (8th largest)',
+    'Highest Point: Keokradong (1,230 m)',
+    'Longest Beach: Cox’s Bazar (120 km)',
+    'UNESCO Sites: Sundarbans, Historic Mosque City of Bagerhat, Ruins of the Buddhist Vihara at Paharpur',
+    'National Animal: Royal Bengal Tiger',
+    'National Flower: Water Lily',
+    'National Fruit: Jackfruit',
+    'National Bird: Oriental Magpie Robin (Doyel)',
+    'Internet Users: 100+ million',
+    'GDP Growth: 6%+ (last decade)',
   ];
 
   useEffect(() => {
@@ -72,7 +80,7 @@ export default function ProfessionalBangladeshApp() {
     return () => clearInterval(factInterval);
   }, []);
 
-  // Comprehensive data structure
+  // --- DATA ---
   const bangladeshData = {
     overview: {
       location: {
@@ -84,6 +92,10 @@ export default function ProfessionalBangladeshApp() {
         timeZone: 'Bangladesh Standard Time (BST) UTC+6',
         climate: 'Tropical monsoon climate',
         terrain: 'Mostly flat alluvial plain; hilly in southeast',
+        highestPoint: 'Keokradong (1,230 m)',
+        majorRivers: ['Padma', 'Jamuna', 'Meghna', 'Brahmaputra', 'Teesta'],
+        naturalResources: ['Natural gas', 'Coal', 'Limestone', 'Arable land'],
+        nationalParks: ['Sundarbans', 'Lawachara', 'Madhupur', 'Ramsagar'],
       },
       government: {
         type: 'Parliamentary Republic',
@@ -92,6 +104,10 @@ export default function ProfessionalBangladeshApp() {
         parliament: 'Jatiya Sangsad (350 seats)',
         judiciary: 'Supreme Court of Bangladesh',
         administrative: '8 Divisions, 64 Districts, 495 Upazilas',
+        independenceDay: 'March 26, 1971',
+        nationalAnthem: 'Amar Shonar Bangla',
+        nationalEmblem: 'Water lily, rice sheaves, jute leaves, stars',
+        nationalFlag: 'Red circle on green field',
       },
       economy: {
         gdp: '$460 billion (2023)',
@@ -99,10 +115,48 @@ export default function ProfessionalBangladeshApp() {
         growth: '6.03% (2023)',
         exports: '$55.7 billion (2023)',
         imports: '$65.4 billion (2023)',
+        inflation: '9.02% (2023)',
+        unemployment: '4.2% (2023)',
+        remittances: '$21.6 billion (2023)',
+        foreignReserves: '$20.5 billion (2023)',
+        stockExchange: ['Dhaka Stock Exchange', 'Chittagong Stock Exchange'],
         mainExports: ['Ready-made garments (84%)', 'Jute products', 'Leather goods', 'Frozen fish'],
         mainIndustries: ['Textiles', 'Pharmaceuticals', 'Steel', 'Shipbuilding', 'IT Services'],
+      },
+      population: {
+        total: '170 million (2024 est.)',
+        density: '1,265/km² (one of the world\'s highest)',
+        urban: '39%',
+        rural: '61%',
+        medianAge: '27.6 years',
+        religions: [
+          { name: 'Islam', percent: '90%' },
+          { name: 'Hinduism', percent: '8.5%' },
+          { name: 'Buddhism', percent: '0.6%' },
+          { name: 'Christianity', percent: '0.3%' },
+          { name: 'Others', percent: '0.6%' },
+        ],
+        literacy: '75%',
+        lifeExpectancy: '73 years',
       }
     },
+    
+     tourism: {
+    destinations: [
+      { name: 'Cox’s Bazar', description: 'World’s longest natural sea beach.' },
+      { name: 'Sundarbans', description: 'Largest mangrove forest, home to Royal Bengal Tiger.' },
+      { name: 'Srimangal', description: 'Tea capital of Bangladesh.' },
+      { name: 'Bandarban', description: 'Hill tracts, waterfalls, tribal culture.' },
+      { name: 'Paharpur', description: 'UNESCO World Heritage Buddhist Vihara.' },
+      { name: 'Saint Martin’s Island', description: 'Coral island in the Bay of Bengal.' },
+    ],
+    tips: [
+      'Best time to visit: November to March.',
+      'Local transport: Rickshaw, CNG, train, bus.',
+      'Popular souvenirs: Nakshi Kantha, Jamdani saree, tea.',
+    ],
+  },
+
     regions: [
       {
         name: 'Dhaka Division',
@@ -404,16 +458,18 @@ export default function ProfessionalBangladeshApp() {
       ],
     },
   };
+const categories = [
+  { id: 'overview', title: 'Overview', icon: '🏛️' },
+  { id: 'regions', title: 'Regions', icon: '🗺️' },
+  { id: 'sports', title: 'Sports', icon: '🏏' },
+  { id: 'culture', title: 'Culture', icon: '🎭' },
+  { id: 'history', title: 'History', icon: '📚' },
+  { id: 'achievements', title: 'Achievements', icon: '🏆' },
+  { id: 'tourism', title: 'Tourism', icon: '🏖️' },
+  { id: 'cuisine', title: 'Cuisine', icon: '🍛' },
+];
 
-  const categories = [
-    { id: 'overview', title: 'Overview', icon: '🏛️' },
-    { id: 'regions', title: 'Regions', icon: '🗺️' },
-    { id: 'sports', title: 'Sports', icon: '🏏' },
-    { id: 'culture', title: 'Culture', icon: '🎭' },
-    { id: 'history', title: 'History', icon: '📚' },
-    { id: 'achievements', title: 'Achievements', icon: '🏆' },
-  ];
-
+  // --- RENDER SECTIONS ---
   const renderOverviewSection = () => (
     <View style={styles.sectionContainer}>
       {/* Location & Geography */}
@@ -440,6 +496,15 @@ export default function ProfessionalBangladeshApp() {
         <Text style={styles.cardDescription}>
           Bangladesh is located in South Asia, bordered by India and Myanmar, with the Bay of Bengal to the south.
         </Text>
+        <Text style={styles.cardDescription}>
+          Highest Point: {bangladeshData.overview.location.highestPoint}
+        </Text>
+        <Text style={styles.cardDescription}>
+          Major Rivers: {bangladeshData.overview.location.majorRivers.join(', ')}
+        </Text>
+        <Text style={styles.cardDescription}>
+          National Parks: {bangladeshData.overview.location.nationalParks.join(', ')}
+        </Text>
       </View>
 
       {/* Government */}
@@ -461,6 +526,22 @@ export default function ProfessionalBangladeshApp() {
           <View style={styles.govItem}>
             <Text style={styles.govLabel}>Parliament</Text>
             <Text style={styles.govValue}>{bangladeshData.overview.government.parliament}</Text>
+          </View>
+          <View style={styles.govItem}>
+            <Text style={styles.govLabel}>Independence Day</Text>
+            <Text style={styles.govValue}>{bangladeshData.overview.government.independenceDay}</Text>
+          </View>
+          <View style={styles.govItem}>
+            <Text style={styles.govLabel}>National Anthem</Text>
+            <Text style={styles.govValue}>{bangladeshData.overview.government.nationalAnthem}</Text>
+          </View>
+          <View style={styles.govItem}>
+            <Text style={styles.govLabel}>National Emblem</Text>
+            <Text style={styles.govValue}>{bangladeshData.overview.government.nationalEmblem}</Text>
+          </View>
+          <View style={styles.govItem}>
+            <Text style={styles.govLabel}>National Flag</Text>
+            <Text style={styles.govValue}>{bangladeshData.overview.government.nationalFlag}</Text>
           </View>
         </View>
       </View>
@@ -490,6 +571,46 @@ export default function ProfessionalBangladeshApp() {
             </View>
           ))}
         </View>
+        <Text style={styles.cardDescription}>
+          Inflation: {bangladeshData.overview.economy.inflation} | Unemployment: {bangladeshData.overview.economy.unemployment}
+        </Text>
+        <Text style={styles.cardDescription}>
+          Remittances: {bangladeshData.overview.economy.remittances} | Foreign Reserves: {bangladeshData.overview.economy.foreignReserves}
+        </Text>
+        <Text style={styles.cardDescription}>
+          Stock Exchanges: {bangladeshData.overview.economy.stockExchange.join(', ')}
+        </Text>
+      </View>
+
+      {/* Population */}
+      <View style={styles.card}>
+        <Text style={styles.cardTitle}>Population & Demographics</Text>
+        <Text style={styles.cardDescription}>
+          Total Population: {bangladeshData.overview.population.total}
+        </Text>
+        <Text style={styles.cardDescription}>
+          Density: {bangladeshData.overview.population.density}
+        </Text>
+        <Text style={styles.cardDescription}>
+          Urban: {bangladeshData.overview.population.urban} | Rural: {bangladeshData.overview.population.rural}
+        </Text>
+        <Text style={styles.cardDescription}>
+          Median Age: {bangladeshData.overview.population.medianAge}
+        </Text>
+        <Text style={styles.cardSubtitle}>Religions:</Text>
+        <View style={styles.industriesList}>
+          {bangladeshData.overview.population.religions.map((rel, idx) => (
+            <View key={idx} style={styles.industryTag}>
+              <Text style={styles.industryText}>{rel.name}: {rel.percent}</Text>
+            </View>
+          ))}
+        </View>
+        <Text style={styles.cardDescription}>
+          Literacy Rate: {bangladeshData.overview.population.literacy}
+        </Text>
+        <Text style={styles.cardDescription}>
+          Life Expectancy: {bangladeshData.overview.population.lifeExpectancy}
+        </Text>
       </View>
     </View>
   );
@@ -548,12 +669,10 @@ export default function ProfessionalBangladeshApp() {
             <Text style={styles.sportName}>{sport.name}</Text>
             <Text style={styles.sportStatus}>{sport.status}</Text>
           </View>
-          
           <Text style={styles.sportSubtitle}>Major Achievements:</Text>
           {sport.achievements.map((achievement, idx) => (
             <Text key={idx} style={styles.achievementItem}>• {achievement}</Text>
           ))}
-          
           {sport.stars && (
             <>
               <Text style={styles.sportSubtitle}>Notable Players:</Text>
@@ -566,7 +685,6 @@ export default function ProfessionalBangladeshApp() {
               </View>
             </>
           )}
-          
           {sport.venues && (
             <>
               <Text style={styles.sportSubtitle}>Major Venues:</Text>
@@ -689,7 +807,6 @@ export default function ProfessionalBangladeshApp() {
           ))}
         </View>
       ))}
-      
       <View style={styles.card}>
         <Text style={styles.cardTitle}>International Recognition</Text>
         {bangladeshData.achievements.recognition.map((recognition, index) => (
@@ -699,13 +816,13 @@ export default function ProfessionalBangladeshApp() {
     </View>
   );
 
+  // --- MAIN RENDER ---
   return (
     <View style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor={COLORS.white} />
-      
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
         {/* Professional Header */}
-        <Animated.View 
+        <Animated.View
           style={[
             styles.header,
             {
@@ -723,7 +840,6 @@ export default function ProfessionalBangladeshApp() {
                 <Text style={styles.motto}>"জয় বাংলা" - Victory to Bengal</Text>
               </View>
             </View>
-            
             <View style={styles.quickFactContainer}>
               <Text style={styles.quickFactLabel}>Quick Fact:</Text>
               <Animated.Text style={[styles.quickFact, { opacity: fadeAnim }]}>
